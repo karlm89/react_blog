@@ -8,7 +8,7 @@ const PostCard = ({ post }) => {
         <img src={`https://picsum.photos/id/${post.id}/320/200`} className="card-img-top" alt='featured img'/>
         <div className="card-header">
           <h5 className="card-title mt-2">
-            <Link to={`/posts/${post.id}`}>{ post.title }</Link>
+            <Link to={`/posts/${post.id}`} params={{ postID: post.id }}>{ post.title }</Link>
           </h5>
         </div>
 

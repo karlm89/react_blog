@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Header from './components/Layout/Header'
@@ -7,34 +6,12 @@ import PostsIndex from './components/Posts/PostsIndex'
 import PostsShow from './components/Posts/PostsShow'
 
 function App() {
-  
-  const [ posts, setPosts ] = useState([])
-
-  useEffect(()=> {
-    const getPosts = async() => {
-      const tasksFromJPH = await fetchPosts()
-      setPosts(tasksFromJPH)
-    }
-    getPosts()
-  })
-
-  const fetchPosts = async() => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-    const data = await res.json()
-    return data
-  }
-
   return (
     <Router>
       <div className="">
         <Header />
         <div style={ contentContainer }>
-          <Route path="/" exact render={(props) => (
-              <>
-                <PostsIndex posts={ posts } postBodyText={ postBodyText } post/>
-              </>
-            )} 
-          />
+          <Route path="/" exact component={ PostsIndex } />
           <Route path="/posts/:postID" component={ PostsShow } />
         </div>
         <Footer />
@@ -46,10 +23,6 @@ function App() {
 const contentContainer = {
   marginBottom:'20px',
   marginTop:'60px'
-}
-
-function postBodyText() {
-  console.log('postBodyText function used.')
 }
 
 export default App;
