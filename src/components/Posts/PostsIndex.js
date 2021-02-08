@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import PostCard from './elements/PostCard'
 
@@ -6,18 +7,14 @@ const PostsIndex = () => {
 	const [posts, setPosts] = useState([])
 
 	useEffect(() => {
-		const getPosts = async () => {
-			const postsFromJPH = await fetchPosts()
-			setPosts(postsFromJPH)
-		}
-		getPosts()
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => {
+        setPosts(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 	}, [])
-
-	const fetchPosts = async () => {
-		const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-		const data = await res.json()
-		return data
-	}
 
 	return (
 		<>
