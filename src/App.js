@@ -5,6 +5,9 @@ import Footer from './components/Layout/Footer'
 import PostsIndex from './components/Posts/PostsIndex'
 import PostsShow from './components/Posts/PostsShow'
 
+import AuthorsIndex from './components/Authors/AuthorsIndex'
+import AuthorsShow from './components/Authors/AuthorsShow'
+
 function App() {
   return (
     <Router>
@@ -13,6 +16,8 @@ function App() {
         <div style={ contentContainer }>
           <Route path="/" exact component={ PostsIndex } />
           <Route path="/posts/:postID" component={ PostsShow } />
+          <Route path="/authors" exact component={ AuthorsIndex } />
+          <Route path="/authors/:authorID" exact component={ AuthorsShow } />
         </div>
         <Footer />
       </div>
@@ -21,8 +26,8 @@ function App() {
 }
 
 const contentContainer = {
-  marginBottom:'20px',
-  marginTop:'60px'
+  paddingBottom:'80px',
+  marginTop:'56px'
 }
 
 export default App;

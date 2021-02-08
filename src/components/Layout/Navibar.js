@@ -11,6 +11,7 @@ const Navibar = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
             <Link className="nav-link" aria-current="page" to="/">Home</Link>
+            <Link className="nav-link" aria-current="page" to="/authors">Our Authors</Link>
           </div>
         </div>
       </div>
