@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Link  } from 'react-router-dom'
+import axios from 'axios'
 
 const AuthorsIndex = () => {
 	const [authors, setAuthors] = useState([])
 
 	useEffect(() => {
-		const getAuthors = async () => {
-			const authorsFromJPH = await fetchAuthors()
-			setAuthors(authorsFromJPH)
-		}
-		getAuthors()
+		axios.get('https://jsonplaceholder.typicode.com/users')
+			.then((res) => {
+				setAuthors(res.data)
+			})
+      .catch((err) => {
+        console.log(err)
+      })
 	})
-
-	const fetchAuthors = async () => {
-		const res = await fetch('https://jsonplaceholder.typicode.com/users')
-		const data = await res.json()
-		return data
-	}
 
 	return (
 		<div className="container">
