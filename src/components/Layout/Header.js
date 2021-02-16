@@ -2,8 +2,8 @@ import Navibar from './Navibar'
 
 const Header = () => {
   return (
-    <header style={ headerStyle }>
-        <Navibar />
+    <header style={headerStyle}>
+      <Navibar />
     </header>
   )
 }
@@ -12,7 +12,7 @@ const headerStyle = {
   top: '0px',
   width: '100%',
   zIndex: '1',
-	position: 'fixed',
+  position: 'fixed',
 }
 
 export default Header
